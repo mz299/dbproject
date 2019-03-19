@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+ {% block head %}
+<title>My Books</title>
+<meta charset="UTF-8">
+ {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>My Books</h1>
+    <ul>
+        {% for b in bor %}
+        <li>
+            <div>
+                {{ b.copy.doc.title }} | Borrow Date: {{ b.borDateTime}} | Due Date: {{ b.dueDate }}
+                <br> 
+                <a href={% url 'return' b.pk %}>
+                    <button type="button">Return</button>
+                </a>
+            </div>
+            <br>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Search</title>
+<meta charset="UTF-8"> 
+{% endblock %} 
+
+{% block body %}
+<div class="container">
+    <h1>Search: {{ keyword }}</h1>
+    <ul>
+        {% for d in data %}
+        <li>
+            <div>
+                {{ d.copy.doc.title }} | Author: {{d.author}} | Publish Date: {{ d.copy.doc.date }} | Publisher: {{ d.copy.doc.publisher.name }} | ISBN: {{ d.copy.doc.book.ISBN }} | Branch: {{ d.copy.lib.name }}
+                <br> {% if d.borrowed %}
+                <b>Not Available</b>
+                {% else %}
+                <a href={% url 'borrow' d.copy.pk %}>
+                    <button type="button">Borrow</button>
+                </a>
+                {% endif %}
+            </div>
+            <br>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

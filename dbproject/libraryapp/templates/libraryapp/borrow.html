@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+ {% block head %}
+<title>Borrow</title>
+<meta charset="UTF-8">
+{% endblock %} 
+
+{% block body %}
+<div class="container">
+    {% if success %}
+    <h1>You have borrowed {{ copy.doc.title }}</h1>
+    {% else %}
+    <h1>{{ reason }}</h1>
+    {% endif %}
+</div>
+{% endblock %}
